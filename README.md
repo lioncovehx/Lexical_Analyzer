@@ -39,16 +39,12 @@ We wrote five test files in `tests/`: valid tokens, complex expressions, edge ca
 | 1. Valid tokens | 36 | 36 | yes |
 | 2. Expressions | 73 | 73 | yes |
 | 3. Edge cases | 61 | 61 | yes |
-| 4. Errors | 124 | 35 | yes, once error tokens are left out |
+| 4. Errors | 125 | 35 | yes, once error tokens are left out |
 | 5. Full program | 91 | 91 | yes |
 
 On every valid file the two scanners produce exactly the same tokens. The diffs in `scanner_comparison/` look bigger than they are, because the two print slightly different headers and stats.
 
-Test 4 is the only real difference:
-
-- Both scanners catch all 90 errors.
-- The manual scanner also puts each bad character into the token stream as an `ERROR` token. That's where the extra tokens come from.
-- On a few malformed floats the two report a column that's off by one from each other, because they stop at different points of the broken lexeme.
+In test 4, both scanners report the same 90 errors at the same line and column. The token counts differ only because the manual scanner also puts each bad character into the token stream as an `ERROR` token.
 
 The hand-written DFA took about 800 lines and several hours. The JFlex spec took about 110 lines and an hour. Writing the DFA by hand is what makes you understand how scanners work. JFlex is what you'd actually use.
 

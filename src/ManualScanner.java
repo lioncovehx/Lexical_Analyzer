@@ -138,17 +138,28 @@ public class ManualScanner {
         int state = q0;
         int lastFinalState = ERROR;
         int lastFinalPos = currentPos;
+        int lastFinalLine = line;
+        int lastFinalColumn = column;
+        int lastFinalLength = 0;
+        int fractionDigits = 0;
         StringBuilder lexeme = new StringBuilder();
         
         while (currentPos < input.length()) {
             char c = input.charAt(currentPos);
             
             int nextState = transition(state, c);
+            // Floats allow at most 6 digits after the point
+            if (state == q6 && Character.isDigit(c) && fractionDigits == 6) {
+                nextState = ERROR;
+            }
             
             if (nextState == ERROR) {
                 if (lastFinalState != ERROR) {
+                    // Back up to the end of the longest match
                     currentPos = lastFinalPos;
-                    return makeToken(lastFinalState, lexeme.toString());
+                    line = lastFinalLine;
+                    column = lastFinalColumn;
+                    return makeToken(lastFinalState, lexeme.substring(0, lastFinalLength));
                 } else {
                     if (lexeme.length() > 0) {
                         char errorChar = lexeme.charAt(0);
@@ -188,11 +199,17 @@ public class ManualScanner {
                 column++;
             }
             
+            if (nextState == q6) {
+                fractionDigits = (state == q5) ? 1 : fractionDigits + 1;
+            }
             state = nextState;
             
             if (isFinalState(state)) {
                 lastFinalState = state;
                 lastFinalPos = currentPos;
+                lastFinalLine = line;
+                lastFinalColumn = column;
+                lastFinalLength = lexeme.length();
             }
             
             if (state == q1 && lexeme.length() >= 31) {
@@ -204,7 +221,9 @@ public class ManualScanner {
             return makeToken(state, lexeme.toString());
         } else if (lastFinalState != ERROR) {
             currentPos = lastFinalPos;
-            return makeToken(lastFinalState, lexeme.substring(0, lastFinalPos - (currentPos - lexeme.length())));
+            line = lastFinalLine;
+            column = lastFinalColumn;
+            return makeToken(lastFinalState, lexeme.substring(0, lastFinalLength));
         } else {
             if (lexeme.length() > 0) {
                 errorHandler.reportIncompleteToken(tokenStartLine, tokenStartColumn, 

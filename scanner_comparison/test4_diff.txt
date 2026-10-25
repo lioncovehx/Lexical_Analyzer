@@ -1,29 +1,11 @@
---- test_results/test4_output.txt	2026-02-18 20:52:09.269234341 +0500
-+++ jflex_results/test4_output.txt	2026-02-18 20:42:51.448135307 +0500
+--- test_results/test4_output.txt	2026-10-26 00:11:04.209773596 +0500
++++ jflex_results/test4_output.txt	2026-10-25 23:48:50.025813410 +0500
 @@ -1,4 +1,3 @@
 -Scanning file: ../tests/test4.lang
  ERROR [INVALID_CHARACTER] at Line 5, Col 1: 'a' - Character 'a' is not recognized in this language
  ERROR [INVALID_CHARACTER] at Line 5, Col 2: 'b' - Character 'b' is not recognized in this language
  ERROR [INVALID_CHARACTER] at Line 5, Col 3: 'c' - Character 'c' is not recognized in this language
-@@ -36,13 +35,13 @@
- ERROR [INVALID_CHARACTER] at Line 12, Col 8: 'a' - Character 'a' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 12, Col 9: 'n' - Character 'n' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 12, Col 10: 'd' - Character 'd' is not recognized in this language
--ERROR [INVALID_CHARACTER] at Line 15, Col 5: '.' - Character '.' is not recognized in this language
-+ERROR [INVALID_CHARACTER] at Line 15, Col 4: '.' - Character '.' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 16, Col 1: '.' - Character '.' is not recognized in this language
-+ERROR [INVALID_CHARACTER] at Line 17, Col 3: '.' - Character '.' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 17, Col 4: '.' - Character '.' is not recognized in this language
--ERROR [INVALID_CHARACTER] at Line 17, Col 5: '.' - Character '.' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 18, Col 4: '.' - Character '.' is not recognized in this language
--ERROR [INVALID_CHARACTER] at Line 19, Col 5: 'e' - Character 'e' is not recognized in this language
--ERROR [INVALID_CHARACTER] at Line 20, Col 6: 'e' - Character 'e' is not recognized in this language
-+ERROR [INVALID_CHARACTER] at Line 19, Col 4: 'e' - Character 'e' is not recognized in this language
-+ERROR [INVALID_CHARACTER] at Line 20, Col 4: 'e' - Character 'e' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 24, Col 1: '=' - Character '=' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 25, Col 1: '!' - Character '!' is not recognized in this language
- ERROR [INVALID_CHARACTER] at Line 26, Col 1: '#' - Character '#' is not recognized in this language
-@@ -90,105 +89,31 @@
+@@ -90,103 +89,28 @@
  ERROR [INVALID_CHARACTER] at Line 42, Col 12: 'i' - Character 'i' is not recognized in this language
  ERROR [INVALID_CHARACTER] at Line 42, Col 13: 'd' - Character 'd' is not recognized in this language
  
@@ -73,28 +55,22 @@
 -<ERROR, "n", Line: 12, Col: 9>
 -<ERROR, "d", Line: 12, Col: 10>
  <COMMENT, "## Malformed floats", Line: 14, Col: 1>
--<INTEGER, "123.", Line: 15, Col: 1>
--<ERROR, ".", Line: 15, Col: 5>
+ <INTEGER, "123", Line: 15, Col: 1>
+-<ERROR, ".", Line: 15, Col: 4>
 -<ERROR, ".", Line: 16, Col: 1>
-+<INTEGER, "123", Line: 15, Col: 1>
  <INTEGER, "456", Line: 16, Col: 2>
--<INTEGER, "12.", Line: 17, Col: 1>
+ <INTEGER, "12", Line: 17, Col: 1>
+-<ERROR, ".", Line: 17, Col: 3>
 -<ERROR, ".", Line: 17, Col: 4>
--<ERROR, ".", Line: 17, Col: 5>
--<INTEGER, "34", Line: 17, Col: 6>
-+<INTEGER, "12", Line: 17, Col: 1>
-+<INTEGER, "34", Line: 17, Col: 5>
+ <INTEGER, "34", Line: 17, Col: 5>
  <FLOAT, "1.2", Line: 18, Col: 1>
 -<ERROR, ".", Line: 18, Col: 4>
  <INTEGER, "3", Line: 18, Col: 5>
--<FLOAT, "1.2e", Line: 19, Col: 1>
--<ERROR, "e", Line: 19, Col: 5>
--<FLOAT, "1.2e+", Line: 20, Col: 1>
--<ERROR, "e", Line: 20, Col: 6>
--<OPERATOR, "+", Line: 20, Col: 7>
-+<FLOAT, "1.2", Line: 19, Col: 1>
-+<FLOAT, "1.2", Line: 20, Col: 1>
-+<OPERATOR, "+", Line: 20, Col: 5>
+ <FLOAT, "1.2", Line: 19, Col: 1>
+-<ERROR, "e", Line: 19, Col: 4>
+ <FLOAT, "1.2", Line: 20, Col: 1>
+-<ERROR, "e", Line: 20, Col: 4>
+ <OPERATOR, "+", Line: 20, Col: 5>
  <COMMENT, "## Incomplete tokens (these are INVALID - not recognized by the language)", Line: 22, Col: 1>
  <COMMENT, "## Note: = and ! are only valid as part of ==, !=, <=, or >=", Line: 23, Col: 1>
 -<ERROR, "=", Line: 24, Col: 1>
@@ -133,13 +109,9 @@
 -<ERROR, "t", Line: 30, Col: 59>
 -<ERROR, "h", Line: 30, Col: 60>
  <COMMENT, "## Float with too many decimal places (over 6)", Line: 32, Col: 1>
--<FLOAT, "123.1234567", Line: 33, Col: 1>
-+<FLOAT, "123.123456", Line: 33, Col: 1>
-+<INTEGER, "7", Line: 33, Col: 11>
- <COMMENT, "## Invalid number formats", Line: 35, Col: 1>
- <OPERATOR, "+", Line: 36, Col: 1>
- <INTEGER, "+123", Line: 36, Col: 2>
-@@ -198,40 +123,11 @@
+ <FLOAT, "123.123456", Line: 33, Col: 1>
+ <INTEGER, "7", Line: 33, Col: 11>
+@@ -199,40 +123,11 @@
  <INTEGER, "-789", Line: 38, Col: 2>
  <COMMENT, "## Mixed valid and invalid", Line: 40, Col: 1>
  <IDENTIFIER, "Variable_1", Line: 41, Col: 1>
@@ -164,7 +136,7 @@
 -
 -
 -========== STATISTICS ==========
--Total tokens: 124
+-Total tokens: 125
 -Lines processed: 43
 -Comments removed: 12
 -
@@ -174,14 +146,14 @@
 -  ERROR: 90
 -  IDENTIFIER: 4
 -  OPERATOR: 4
--  INTEGER: 10
+-  INTEGER: 11
 -================================
  
 +=== SYMBOL TABLE ===
  
  ========== SYMBOL TABLE ==========
  Name                 Type            First Line   Frequency
-@@ -244,6 +140,8 @@
+@@ -245,6 +140,8 @@
  Total unique identifiers: 4
  
  
@@ -190,7 +162,7 @@
  ========== ERROR SUMMARY ==========
    Total errors: 90
  
-@@ -264,3 +162,12 @@
+@@ -265,3 +162,12 @@
      ... and 80 more
  ===================================
  

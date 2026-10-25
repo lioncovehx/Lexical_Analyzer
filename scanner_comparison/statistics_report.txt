@@ -29,7 +29,7 @@ Test 3:
 
 Test 4:
 --------
-  Manual Scanner - Tokens recognized: 124
+  Manual Scanner - Tokens recognized: 125
   JFlex Scanner  - Tokens recognized: 35
   Status: DIFFERENT ⚠
 

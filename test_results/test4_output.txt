@@ -36,13 +36,13 @@ ERROR [INVALID_CHARACTER] at Line 12, Col 7: 's' - Character 's' is not recogniz
 ERROR [INVALID_CHARACTER] at Line 12, Col 8: 'a' - Character 'a' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 12, Col 9: 'n' - Character 'n' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 12, Col 10: 'd' - Character 'd' is not recognized in this language
-ERROR [INVALID_CHARACTER] at Line 15, Col 5: '.' - Character '.' is not recognized in this language
+ERROR [INVALID_CHARACTER] at Line 15, Col 4: '.' - Character '.' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 16, Col 1: '.' - Character '.' is not recognized in this language
+ERROR [INVALID_CHARACTER] at Line 17, Col 3: '.' - Character '.' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 17, Col 4: '.' - Character '.' is not recognized in this language
-ERROR [INVALID_CHARACTER] at Line 17, Col 5: '.' - Character '.' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 18, Col 4: '.' - Character '.' is not recognized in this language
-ERROR [INVALID_CHARACTER] at Line 19, Col 5: 'e' - Character 'e' is not recognized in this language
-ERROR [INVALID_CHARACTER] at Line 20, Col 6: 'e' - Character 'e' is not recognized in this language
+ERROR [INVALID_CHARACTER] at Line 19, Col 4: 'e' - Character 'e' is not recognized in this language
+ERROR [INVALID_CHARACTER] at Line 20, Col 4: 'e' - Character 'e' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 24, Col 1: '=' - Character '=' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 25, Col 1: '!' - Character '!' is not recognized in this language
 ERROR [INVALID_CHARACTER] at Line 26, Col 1: '#' - Character '#' is not recognized in this language
@@ -134,22 +134,22 @@ ERROR [INVALID_CHARACTER] at Line 42, Col 13: 'd' - Character 'd' is not recogni
 <ERROR, "n", Line: 12, Col: 9>
 <ERROR, "d", Line: 12, Col: 10>
 <COMMENT, "## Malformed floats", Line: 14, Col: 1>
-<INTEGER, "123.", Line: 15, Col: 1>
-<ERROR, ".", Line: 15, Col: 5>
+<INTEGER, "123", Line: 15, Col: 1>
+<ERROR, ".", Line: 15, Col: 4>
 <ERROR, ".", Line: 16, Col: 1>
 <INTEGER, "456", Line: 16, Col: 2>
-<INTEGER, "12.", Line: 17, Col: 1>
+<INTEGER, "12", Line: 17, Col: 1>
+<ERROR, ".", Line: 17, Col: 3>
 <ERROR, ".", Line: 17, Col: 4>
-<ERROR, ".", Line: 17, Col: 5>
-<INTEGER, "34", Line: 17, Col: 6>
+<INTEGER, "34", Line: 17, Col: 5>
 <FLOAT, "1.2", Line: 18, Col: 1>
 <ERROR, ".", Line: 18, Col: 4>
 <INTEGER, "3", Line: 18, Col: 5>
-<FLOAT, "1.2e", Line: 19, Col: 1>
-<ERROR, "e", Line: 19, Col: 5>
-<FLOAT, "1.2e+", Line: 20, Col: 1>
-<ERROR, "e", Line: 20, Col: 6>
-<OPERATOR, "+", Line: 20, Col: 7>
+<FLOAT, "1.2", Line: 19, Col: 1>
+<ERROR, "e", Line: 19, Col: 4>
+<FLOAT, "1.2", Line: 20, Col: 1>
+<ERROR, "e", Line: 20, Col: 4>
+<OPERATOR, "+", Line: 20, Col: 5>
 <COMMENT, "## Incomplete tokens (these are INVALID - not recognized by the language)", Line: 22, Col: 1>
 <COMMENT, "## Note: = and ! are only valid as part of ==, !=, <=, or >=", Line: 23, Col: 1>
 <ERROR, "=", Line: 24, Col: 1>
@@ -188,7 +188,8 @@ ERROR [INVALID_CHARACTER] at Line 42, Col 13: 'd' - Character 'd' is not recogni
 <ERROR, "t", Line: 30, Col: 59>
 <ERROR, "h", Line: 30, Col: 60>
 <COMMENT, "## Float with too many decimal places (over 6)", Line: 32, Col: 1>
-<FLOAT, "123.1234567", Line: 33, Col: 1>
+<FLOAT, "123.123456", Line: 33, Col: 1>
+<INTEGER, "7", Line: 33, Col: 11>
 <COMMENT, "## Invalid number formats", Line: 35, Col: 1>
 <OPERATOR, "+", Line: 36, Col: 1>
 <INTEGER, "+123", Line: 36, Col: 2>
@@ -219,7 +220,7 @@ ERROR [INVALID_CHARACTER] at Line 42, Col 13: 'd' - Character 'd' is not recogni
 
 
 ========== STATISTICS ==========
-Total tokens: 124
+Total tokens: 125
 Lines processed: 43
 Comments removed: 12
 
@@ -229,7 +230,7 @@ Token counts by type:
   ERROR: 90
   IDENTIFIER: 4
   OPERATOR: 4
-  INTEGER: 10
+  INTEGER: 11
 ================================
 
 
